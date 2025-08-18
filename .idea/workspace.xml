@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="37ba42f9-95df-478f-af71-685ad26059bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Postal_Legacy_API.postman_collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/legacy_api/base_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/legacy_api/base_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/legacy_api/credentials_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/legacy_api/credentials_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/legacy_api/domains_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/legacy_api/domains_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/legacy_api/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/legacy_api/users_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/http_endpoint_factory.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/http_endpoint_factory.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/organization_factory.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/organization_factory.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/server_factory.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/server_factory.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="31MUujC8hSQ4ee8YOIQAEyQfO0h" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP&quot;: &quot;1755333725636&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/legacy-api-management-endpoints&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sam/Documents/projects/postal&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ssh.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-RM-252.23892.415" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37ba42f9-95df-478f-af71-685ad26059bb" name="Changes" comment="" />
+      <created>1755333665533</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755333665533</updated>
+      <workItem from="1755333667264" duration="74552000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/lib/postal/message_db/provisioner.rb</url>
+          <line>39</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

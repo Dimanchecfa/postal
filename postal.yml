@@ -1,0 +1,50 @@
+web_hostname: localhost
+web_protocol: http
+web_https_bind_address: 0.0.0.0
+web_http_bind_address: 0.0.0.0
+
+rails:
+  environment: development
+
+main_db:
+  host: mariadb
+  port: 3306
+  username: postal
+  password: postal
+  database: postal
+
+message_db:
+  host: mariadb  
+  port: 3306
+  username: postal
+  password: postal
+  database: postal-messages
+
+rabbitmq:
+  host: 127.0.0.1
+  port: 5672
+  username: postal
+  password: postal
+  vhost: postal
+
+dns:
+  mx_records:
+    - mx.postal.local
+  smtp_server_hostname: postal.local
+  spf_include: spf.postal.local
+  return_path: rp.postal.local
+  route_domain: routes.postal.local
+  track_domain: postal.local
+
+smtp_server:
+  port: 30
+  bind_address: "[::]"
+
+logging:
+  enabled: true
+  level: info
+
+sentry:
+  dsn: 
+
+use_ip_pools: false

@@ -26,12 +26,18 @@ module LegacyAPI
   #     a request is determined by the value of the 'status' attribute in the
   #     returned JSON.
   class BaseController < ActionController::Base
+    include Pagination
 
     skip_before_action :set_browser_id
     skip_before_action :verify_authenticity_token
+    before_action :set_content_type_to_json
 
     before_action :start_timer
     before_action :authenticate_as_server
+    
+    rescue_from StandardError, with: :handle_unexpected_error
+    rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found_error
+    rescue_from ActiveRecord::RecordInvalid, with: :handle_validation_error
 
     private
 
@@ -127,6 +133,47 @@ module LegacyAPI
                      time: (Time.now.to_f - @start_time).round(3),
                      flags: {},
                      data: { message: message } }
+    end
+
+    # Force all responses to be JSON to avoid HTML responses on errors
+    #
+    # @return [void]
+    def set_content_type_to_json
+      request.format = :json
+    end
+
+    # Handle unexpected errors with JSON response
+    #
+    # @param [Exception] exception
+    # @return [void]
+    def handle_unexpected_error(exception)
+      Rails.logger.error "Unexpected error in Legacy API: #{exception.class.name} - #{exception.message}"
+      Rails.logger.error exception.backtrace.join("\n") if Rails.env.development?
+      
+      render_error "InternalServerError",
+                   message: "An unexpected error occurred",
+                   error_type: exception.class.name
+    end
+
+    # Handle ActiveRecord not found errors
+    #
+    # @param [ActiveRecord::RecordNotFound] exception
+    # @return [void]
+    def handle_not_found_error(exception)
+      Rails.logger.warn "Record not found in Legacy API: #{exception.message}"
+      
+      render_error "RecordNotFound",
+                   message: "The requested resource was not found"
+    end
+
+    # Handle ActiveRecord validation errors
+    #
+    # @param [ActiveRecord::RecordInvalid] exception
+    # @return [void]
+    def handle_validation_error(exception)
+      Rails.logger.warn "Validation error in Legacy API: #{exception.message}"
+      
+      render_parameter_error exception.record.errors.full_messages.join(", ")
     end
 
   end

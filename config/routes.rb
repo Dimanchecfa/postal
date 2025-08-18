@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   match "/api/v1/domains/:id" => "legacy_api/domains#update", via: [:put, :patch]
   match "/api/v1/domains/:id" => "legacy_api/domains#destroy", via: [:delete]
   match "/api/v1/domains/:id/verify" => "legacy_api/domains#verify", via: [:post]
+  match "/api/v1/domains/:id/check_dns" => "legacy_api/domains#check_dns", via: [:post]
 
   # Credentials (API Keys)
   match "/api/v1/credentials" => "legacy_api/credentials#index", via: [:get]
@@ -29,6 +30,34 @@ Rails.application.routes.draw do
   match "/api/v1/users/:id" => "legacy_api/users#show", via: [:get]
   match "/api/v1/users/:id" => "legacy_api/users#update", via: [:put, :patch]
   match "/api/v1/users/:id" => "legacy_api/users#destroy", via: [:delete]
+
+  # Routes
+  match "/api/v1/routes" => "legacy_api/routes#index", via: [:get]
+  match "/api/v1/routes" => "legacy_api/routes#create", via: [:post]
+  match "/api/v1/routes/:id" => "legacy_api/routes#show", via: [:get]
+  match "/api/v1/routes/:id" => "legacy_api/routes#update", via: [:put, :patch]
+  match "/api/v1/routes/:id" => "legacy_api/routes#destroy", via: [:delete]
+
+  # HTTP Endpoints
+  match "/api/v1/http_endpoints" => "legacy_api/http_endpoints#index", via: [:get]
+  match "/api/v1/http_endpoints" => "legacy_api/http_endpoints#create", via: [:post]
+  match "/api/v1/http_endpoints/:id" => "legacy_api/http_endpoints#show", via: [:get]
+  match "/api/v1/http_endpoints/:id" => "legacy_api/http_endpoints#update", via: [:put, :patch]
+  match "/api/v1/http_endpoints/:id" => "legacy_api/http_endpoints#destroy", via: [:delete]
+
+  # SMTP Endpoints
+  match "/api/v1/smtp_endpoints" => "legacy_api/smtp_endpoints#index", via: [:get]
+  match "/api/v1/smtp_endpoints" => "legacy_api/smtp_endpoints#create", via: [:post]
+  match "/api/v1/smtp_endpoints/:id" => "legacy_api/smtp_endpoints#show", via: [:get]
+  match "/api/v1/smtp_endpoints/:id" => "legacy_api/smtp_endpoints#update", via: [:put, :patch]
+  match "/api/v1/smtp_endpoints/:id" => "legacy_api/smtp_endpoints#destroy", via: [:delete]
+
+  # Address Endpoints
+  match "/api/v1/address_endpoints" => "legacy_api/address_endpoints#index", via: [:get]
+  match "/api/v1/address_endpoints" => "legacy_api/address_endpoints#create", via: [:post]
+  match "/api/v1/address_endpoints/:id" => "legacy_api/address_endpoints#show", via: [:get]
+  match "/api/v1/address_endpoints/:id" => "legacy_api/address_endpoints#update", via: [:put, :patch]
+  match "/api/v1/address_endpoints/:id" => "legacy_api/address_endpoints#destroy", via: [:delete]
 
   scope "org/:org_permalink", as: "organization" do
     resources :domains, only: [:index, :new, :create, :destroy] do

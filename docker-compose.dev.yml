@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: postal
+      MARIADB_DATABASE: postal
+      MARIADB_USER: postal
+      MARIADB_PASSWORD: postal
+    ports:
+      - "3307:3306"
+    volumes:
+      - postal_mysql_data:/var/lib/mysql
+      - "./docker/init-permissions.sql:/docker-entrypoint-initdb.d/init-permissions.sql"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-ppostal"]
+      timeout: 20s
+      retries: 10
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+
+  postal:
+    image: postal-local
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    ports:
+      - "5001:5000"
+    volumes:
+      - "./postal.yml:/config/postal.yml"
+      - "./spec:/opt/postal/app/spec"
+    environment:
+      POSTAL_CONFIG_FILE_PATH: /config/postal.yml
+      BIND_ADDRESS: 0.0.0.0
+    command: ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  worker:
+    image: postal-local
+    depends_on:
+      - postal
+      - mariadb
+    volumes:
+      - "./postal.yml:/config/postal.yml"
+    environment:
+      POSTAL_CONFIG_FILE_PATH: /config/postal.yml
+    command: ["bundle", "exec", "script/worker.rb"]
+
+  smtp:
+    image: postal-local
+    depends_on:
+      - postal
+      - mariadb
+    ports:
+      - "2525:30"
+    volumes:
+      - "./postal.yml:/config/postal.yml"
+    environment:
+      POSTAL_CONFIG_FILE_PATH: /config/postal.yml
+    command: ["bundle", "exec", "script/smtp_server.rb"]
+
+volumes:
+  postal_mysql_data:

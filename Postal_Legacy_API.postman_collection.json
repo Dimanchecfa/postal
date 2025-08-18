@@ -1,0 +1,1252 @@
+{
+  "info": {
+    "name": "Postal Legacy API v1",
+    "description": "Collection complète pour tester les 7 endpoints Legacy API de Postal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "postal-legacy-api-v1"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5001",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "6BTHi77tBJv0000Bt42yp20c",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Domains",
+      "item": [
+        {
+          "name": "List Domains",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains?page=1&per_page=25&search=&verified=&sort=name",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "verified",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Domain",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"exemple.com\",\n  \"verification_method\": \"DNS\",\n  \"auto_verify\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains"]
+            }
+          }
+        },
+        {
+          "name": "Get Domain",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains/:domain_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains", ":domain_id"],
+              "variable": [
+                {
+                  "key": "domain_id",
+                  "value": "DOMAIN_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Domain",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verification_method\": \"Email\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains/:domain_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains", ":domain_id"],
+              "variable": [
+                {
+                  "key": "domain_id",
+                  "value": "DOMAIN_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verify Domain",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"verification_code_here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains/:domain_id/verify",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains", ":domain_id", "verify"],
+              "variable": [
+                {
+                  "key": "domain_id",
+                  "value": "DOMAIN_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check DNS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains/:domain_id/check_dns",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains", ":domain_id", "check_dns"],
+              "variable": [
+                {
+                  "key": "domain_id",
+                  "value": "DOMAIN_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Domain",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains/:domain_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains", ":domain_id"],
+              "variable": [
+                {
+                  "key": "domain_id",
+                  "value": "DOMAIN_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Credentials",
+      "item": [
+        {
+          "name": "List Credentials",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/credentials?page=1&per_page=25&type=&sort=name",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "credentials"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "type",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Credential",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mon API Key\",\n  \"type\": \"API\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/credentials",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "credentials"]
+            }
+          }
+        },
+        {
+          "name": "Get Credential",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/credentials/:credential_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "credentials", ":credential_id"],
+              "variable": [
+                {
+                  "key": "credential_id",
+                  "value": "CREDENTIAL_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Credential",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mon API Key Modifié\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/credentials/:credential_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "credentials", ":credential_id"],
+              "variable": [
+                {
+                  "key": "credential_id",
+                  "value": "CREDENTIAL_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Credential",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/credentials/:credential_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "credentials", ":credential_id"],
+              "variable": [
+                {
+                  "key": "credential_id",
+                  "value": "CREDENTIAL_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Users",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users?page=1&per_page=25&search=&admin=&sort=email_address",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "admin",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "email_address"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email_address\": \"john.doe@exemple.com\",\n  \"password\": \"motdepasse123\",\n  \"admin\": false,\n  \"time_zone\": \"UTC\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/:user_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", ":user_id"],
+              "variable": [
+                {
+                  "key": "user_id",
+                  "value": "USER_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"admin\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/:user_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", ":user_id"],
+              "variable": [
+                {
+                  "key": "user_id",
+                  "value": "USER_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/:user_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", ":user_id"],
+              "variable": [
+                {
+                  "key": "user_id",
+                  "value": "USER_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Routes",
+      "item": [
+        {
+          "name": "List Routes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes?page=1&per_page=25&search=&domain=&mode=&sort=name",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "domain",
+                  "value": ""
+                },
+                {
+                  "key": "mode",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Route (Catch-all to HTTP Endpoint)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"*\",\n  \"domain_id\": \"DOMAIN_UUID_HERE\",\n  \"mode\": \"Endpoint\",\n  \"spam_mode\": \"Mark\",\n  \"endpoint_id\": \"HTTP_ENDPOINT_UUID_HERE\",\n  \"endpoint_type\": \"HTTPEndpoint\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes"]
+            }
+          }
+        },
+        {
+          "name": "Create Route (Specific Address)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"contact\",\n  \"domain_id\": \"DOMAIN_UUID_HERE\",\n  \"mode\": \"Endpoint\",\n  \"spam_mode\": \"Mark\",\n  \"endpoint_id\": \"ADDRESS_ENDPOINT_UUID_HERE\",\n  \"endpoint_type\": \"AddressEndpoint\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes"]
+            }
+          }
+        },
+        {
+          "name": "Get Route",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes/:route_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes", ":route_id"],
+              "variable": [
+                {
+                  "key": "route_id",
+                  "value": "ROUTE_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Route",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"spam_mode\": \"Quarantine\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes/:route_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes", ":route_id"],
+              "variable": [
+                {
+                  "key": "route_id",
+                  "value": "ROUTE_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Route",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes/:route_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes", ":route_id"],
+              "variable": [
+                {
+                  "key": "route_id",
+                  "value": "ROUTE_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. HTTP Endpoints",
+      "item": [
+        {
+          "name": "List HTTP Endpoints",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/http_endpoints?page=1&per_page=25&search=&encoding=&format=&sort=name",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "http_endpoints"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "encoding",
+                  "value": ""
+                },
+                {
+                  "key": "format",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create HTTP Endpoint (PhantomInbox Webhook)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"PhantomInbox Webhook\",\n  \"url\": \"https://api.phantominbox.com/webhooks/postal-emails\",\n  \"encoding\": \"BodyAsJSON\",\n  \"format\": \"Hash\",\n  \"strip_replies\": false,\n  \"include_attachments\": true,\n  \"timeout\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/http_endpoints",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "http_endpoints"]
+            }
+          }
+        },
+        {
+          "name": "Get HTTP Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/http_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "http_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "HTTP_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update HTTP Endpoint",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timeout\": 15,\n  \"include_attachments\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/http_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "http_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "HTTP_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete HTTP Endpoint",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/http_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "http_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "HTTP_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. SMTP Endpoints",
+      "item": [
+        {
+          "name": "List SMTP Endpoints",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/smtp_endpoints?page=1&per_page=25&search=&hostname=&ssl_mode=&sort=name",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "smtp_endpoints"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "hostname",
+                  "value": ""
+                },
+                {
+                  "key": "ssl_mode",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create SMTP Endpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gmail SMTP\",\n  \"hostname\": \"smtp.gmail.com\",\n  \"port\": 587,\n  \"ssl_mode\": \"STARTTLS\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/smtp_endpoints",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "smtp_endpoints"]
+            }
+          }
+        },
+        {
+          "name": "Get SMTP Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/smtp_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "smtp_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "SMTP_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update SMTP Endpoint",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"port\": 465,\n  \"ssl_mode\": \"TLS\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/smtp_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "smtp_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "SMTP_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete SMTP Endpoint",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/smtp_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "smtp_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "SMTP_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Address Endpoints",
+      "item": [
+        {
+          "name": "List Address Endpoints",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/address_endpoints?page=1&per_page=25&search=&domain=&sort=address",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "address_endpoints"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "25"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "domain",
+                  "value": ""
+                },
+                {
+                  "key": "sort",
+                  "value": "address"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Address Endpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"admin@mondomaine.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/address_endpoints",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "address_endpoints"]
+            }
+          }
+        },
+        {
+          "name": "Get Address Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/address_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "address_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "ADDRESS_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Address Endpoint",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"support@mondomaine.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/address_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "address_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "ADDRESS_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Address Endpoint",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/address_endpoints/:endpoint_id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "address_endpoints", ":endpoint_id"],
+              "variable": [
+                {
+                  "key": "endpoint_id",
+                  "value": "ADDRESS_ENDPOINT_UUID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🚀 PhantomInbox Workflow",
+      "item": [
+        {
+          "name": "1. Create Domain for Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"client-tempmail.com\",\n  \"verification_method\": \"DNS\",\n  \"auto_verify\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/domains",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "domains"]
+            }
+          }
+        },
+        {
+          "name": "2. Create HTTP Endpoint for Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Client TempMail Webhook\",\n  \"url\": \"https://api.phantominbox.com/webhooks/client-123/emails\",\n  \"encoding\": \"BodyAsJSON\",\n  \"format\": \"Hash\",\n  \"strip_replies\": false,\n  \"include_attachments\": true,\n  \"timeout\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/http_endpoints",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "http_endpoints"]
+            }
+          }
+        },
+        {
+          "name": "3. Create Catch-All Route",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Server-API-Key",
+                "value": "{{api_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"*\",\n  \"domain_id\": \"DOMAIN_UUID_FROM_STEP_1\",\n  \"mode\": \"Endpoint\",\n  \"spam_mode\": \"Mark\",\n  \"endpoint_id\": \"HTTP_ENDPOINT_UUID_FROM_STEP_2\",\n  \"endpoint_type\": \"HTTPEndpoint\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/routes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "routes"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

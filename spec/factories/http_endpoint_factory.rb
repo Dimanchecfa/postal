@@ -27,5 +27,6 @@ FactoryBot.define do
     url { "https://example.com/endpoint" }
     encoding { "BodyAsJSON" }
     format { "Hash" }
+    timeout { 5 }
   end
 end

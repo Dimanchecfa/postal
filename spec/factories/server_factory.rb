@@ -45,10 +45,10 @@
 FactoryBot.define do
   factory :server do
     association :organization
-    name { "Mail Server" }
+    sequence(:name) { |n| "Mail Server #{SecureRandom.hex(4)}-#{n}" }
     mode { "Live" }
     provision_database { false }
-    sequence(:permalink) { |n| "server#{n}" }
+    sequence(:permalink) { |n| "server-#{SecureRandom.hex(8)}-#{n}" }
 
     trait :suspended do
       suspended_at { Time.current }

@@ -25,8 +25,8 @@
 
 FactoryBot.define do
   factory :organization do
-    name { "Acme Inc" }
-    sequence(:permalink) { |n| "org#{n}" }
+    sequence(:name) { |n| "Acme Inc #{SecureRandom.hex(4)}-#{n}" }
+    sequence(:permalink) { |n| "org-#{SecureRandom.hex(8)}-#{n}" }
     association :owner, factory: :user
 
     trait :suspended do
